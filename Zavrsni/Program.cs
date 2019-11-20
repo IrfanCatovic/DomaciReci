@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Zavrsni
 {
@@ -10,18 +11,33 @@ namespace Zavrsni
     {
         static void Main(string[] args)
         {
+            /*if (File.Exists("art.txt"))
+            {
+                foreach (string reci in File.ReadLines("rec.txt"))
+                {
+                    string[] polja = reci.Split(';');
+
+                    Artikli.Add((polja[0], polja[1],
+                        int.Parse(polja[2]), decimal.Parse(polja[3])));
+                }
+            }*/
+
+                string[] reci = File.ReadAllLines("reci.txt");
+                foreach (string reciIzNiza in reci)
+                {
+                    
+                }
+           
+            Random nasumicnaRec = new Random();
+            var randomLinijaBroj = nasumicnaRec.Next(0, reci.Length - 1);
+            var linija = reci[randomLinijaBroj];
+
 
             
-
-
-            Console.WriteLine("Unesite rec: "); //unosenje reci
-            string rec = Console.ReadLine();
-            char[] nizRec;
-            nizRec = rec.ToCharArray();
             char[] copy = nizRec;//kopija reci za proveru
 
             char[] nizTest = new char[nizRec.Length]; //rec za ispis
-
+            //string unosRec;
             char unos;
 
             for (int i = 0; i < copy.Length; i++)
@@ -31,19 +47,31 @@ namespace Zavrsni
             bool tacno = false;
             do
             {
+                Console.WriteLine();
                 Console.Write("Unesite slovo: ");
                 unos = Console.ReadKey().KeyChar;
                 Console.WriteLine();
-                for (int indeks = 0;  indeks < copy.Length;  indeks++)
+                for (int indeks = 0; indeks < copy.Length; indeks++)
                 {
                     if (copy[indeks] == unos)
                     {
                         Console.WriteLine("Pogodak! "); //provera unosa
-                        nizTest[indeks] = unos;                        
+                        nizTest[indeks] = unos;
                         tacno = true;
                     }
+                    
                 }
-                Console.WriteLine(nizTest);
+                foreach (char c in nizTest)
+                {
+                    if(c != '\0')
+                    {
+                        Console.Write(c);
+                    }
+                    else
+                    {
+                        Console.Write("_ ");
+                    }
+                }
             } while (unos != '4');
 
 
