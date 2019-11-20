@@ -11,16 +11,7 @@ namespace Zavrsni
     {
         static void Main(string[] args)
         {
-            /*if (File.Exists("art.txt"))
-            {
-                foreach (string reci in File.ReadLines("rec.txt"))
-                {
-                    string[] polja = reci.Split(';');
-
-                    Artikli.Add((polja[0], polja[1],
-                        int.Parse(polja[2]), decimal.Parse(polja[3])));
-                }
-            }*/
+            
 
                 string[] reci = File.ReadAllLines("reci.txt");
                 foreach (string reciIzNiza in reci)
@@ -30,11 +21,11 @@ namespace Zavrsni
            
             Random nasumicnaRec = new Random();
             var randomLinijaBroj = nasumicnaRec.Next(0, reci.Length - 1);
-            var linija = reci[randomLinijaBroj];
+            string linija = reci[randomLinijaBroj];
 
 
             
-            char[] copy = nizRec;//kopija reci za proveru
+            char[] copy = linija;//kopija reci za proveru
 
             char[] nizTest = new char[nizRec.Length]; //rec za ispis
             //string unosRec;
